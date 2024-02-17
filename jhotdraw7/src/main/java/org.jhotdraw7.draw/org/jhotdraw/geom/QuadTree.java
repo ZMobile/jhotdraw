@@ -220,6 +220,8 @@ public class QuadTree<T> implements Serializable {
         }
         
         public void findContains(Point2D.Double p, HashSet<T> result) {
+            //In here, the find contains is not factoring for moved restored rectangles,
+            //We shall have to figure out why this is the case.
             if (bounds.contains(p)) {
                 for (Map.Entry<T,Rectangle2D.Double> entry : objects.entrySet()) {
                     if (entry.getValue().contains(p)) {

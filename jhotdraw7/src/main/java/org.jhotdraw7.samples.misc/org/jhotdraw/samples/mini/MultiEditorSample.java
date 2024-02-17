@@ -24,7 +24,6 @@ import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ResourceBundle;
 
 /**
  * Example showing how to create a drawing editor which acts on four drawing

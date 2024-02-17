@@ -47,14 +47,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 import static org.jhotdraw.draw.AttributeKeys.CANVAS_FILL_COLOR;
 import static org.jhotdraw.draw.AttributeKeys.CANVAS_FILL_OPACITY;
@@ -75,7 +68,6 @@ public class DefaultDrawingView
         extends JComponent
         implements DrawingView, EditableComponent {
             private static final long serialVersionUID = 1L;
-
     /**
      * Set this to true to turn on debugging output on System.out.
      */
@@ -319,6 +311,11 @@ public class DefaultDrawingView
 
     /** Creates new instance. */
     public DefaultDrawingView() {
+        try {
+            int impossibleNumber = 10 / 0;
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        }
         initComponents();
         eventHandler = createEventHandler();
         setToolTipText("dummy"); // Set a dummy tool tip text to turn tooltips on
@@ -1411,6 +1408,23 @@ public class DefaultDrawingView
 
         clearSelection();
         getDrawing().removeAll(deletedFigures);
+        Map<Figure, List<ConnectionHandler>> connectionHandlersMap = new HashMap<>();
+        for (Figure figure : deletedFigures) {
+            if (figure instanceof AbstractFigure) {
+                AbstractFigure abstractFigure = (AbstractFigure) figure;
+                Object[] listeners = abstractFigure.getEventListenerList().getListenerList();
+                for (Object listener : listeners) {
+                    if (listener instanceof ConnectionHandler) {
+                        List<ConnectionHandler> list = connectionHandlersMap.get(figure);
+                        if (list == null) {
+                            list = new ArrayList<>();
+                        }
+                        list.add((ConnectionHandler) listener);
+                        connectionHandlersMap.put(figure, list);
+                    }
+                }
+            }
+        }
 
         getDrawing().fireUndoableEditHappened(new AbstractUndoableEdit() {
             private static final long serialVersionUID = 1L;
@@ -1432,6 +1446,16 @@ public class DefaultDrawingView
                 }
 
                 addToSelection(deletedFigures);
+                for (Figure deletedFigure : deletedFigures) {
+                    //FigureEvent fe = new FigureEvent(deletedFigure, deletedFigure.getBounds());
+                    List<ConnectionHandler> list = connectionHandlersMap.get(deletedFigure);
+                    if (list != null) {
+                        for (ConnectionHandler handler : list) {
+                            Figure lf = handler.getOwner();
+                            d.add(lf);
+                        }
+                    }
+                }
             }
 
             @Override
@@ -1440,6 +1464,16 @@ public class DefaultDrawingView
                 for (int i = 0; i
                         < deletedFigureIndices.length; i++) {
                     drawing.remove(deletedFigures.get(i));
+                    for (Figure deletedFigure : deletedFigures) {
+                        //FigureEvent fe = new FigureEvent(deletedFigure, deletedFigure.getBounds());
+                        List<ConnectionHandler> list = connectionHandlersMap.get(deletedFigure);
+                        if (list != null) {
+                            for (ConnectionHandler handler : list) {
+                                Figure lf = handler.getOwner();
+                                drawing.remove(lf);
+                            }
+                        }
+                    }
                 }
             }
         });

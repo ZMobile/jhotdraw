@@ -133,7 +133,6 @@ public class DefaultSelectAreaTracker extends AbstractTool implements SelectArea
                     figure = view.getDrawing().findFigureBehind(p, figure);
                 }
             }
-
             updateHoverHandles(view, figure);
         }
     }

@@ -455,7 +455,7 @@ public interface Application {
     public URIChooser getExportChooser(@Nullable View v);
 
     /**
-     * Gets an import chooser for the specified view or for the entire application.
+     * Gets an import org.jhotdraw.draw.Chooser for the specified view or for the entire application.
      *
      * @param v A view or null.
      * @return A chooser.

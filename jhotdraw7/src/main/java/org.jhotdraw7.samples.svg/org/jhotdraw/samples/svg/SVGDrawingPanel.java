@@ -4,12 +4,7 @@
 package org.jhotdraw.samples.svg;
 
 import org.jhotdraw.app.Disposable;
-import org.jhotdraw.draw.DefaultDrawingEditor;
-import org.jhotdraw.draw.DefaultDrawingViewTransferHandler;
-import org.jhotdraw.draw.Drawing;
-import org.jhotdraw.draw.DrawingEditor;
-import org.jhotdraw.draw.DrawingView;
-import org.jhotdraw.draw.QuadTreeDrawing;
+import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.io.ImageInputFormat;
 import org.jhotdraw.draw.io.ImageOutputFormat;
 import org.jhotdraw.draw.io.InputFormat;
@@ -518,7 +513,7 @@ public class SVGDrawingPanel extends JPanel implements Disposable {
 
         toolButtonGroup = new javax.swing.ButtonGroup();
         scrollPane = new javax.swing.JScrollPane();
-        view = new org.jhotdraw.draw.DefaultDrawingView();
+        view = new DefaultDrawingView();
         toolsPanel = new javax.swing.JPanel();
         toolsScrollPane = new javax.swing.JScrollPane();
         toolsPane = new javax.swing.JPanel();
@@ -595,7 +590,7 @@ public class SVGDrawingPanel extends JPanel implements Disposable {
     private javax.swing.JPanel toolsPane;
     private javax.swing.JPanel toolsPanel;
     private javax.swing.JScrollPane toolsScrollPane;
-    private org.jhotdraw.draw.DefaultDrawingView view;
+    private DefaultDrawingView view;
     private org.jhotdraw.samples.svg.gui.ViewToolBar viewToolBar;
     // End of variables declaration//GEN-END:variables
 }

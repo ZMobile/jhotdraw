@@ -185,7 +185,6 @@ public class UndoRedoManager extends UndoManager {//javax.swing.undo.UndoManager
      */
     @Override
     public boolean addEdit(UndoableEdit anEdit) {
-        if (DEBUG) System.out.println("UndoRedoManager@"+hashCode()+".add "+anEdit);
         if (undoOrRedoInProgress) {
             anEdit.die();
             return true;

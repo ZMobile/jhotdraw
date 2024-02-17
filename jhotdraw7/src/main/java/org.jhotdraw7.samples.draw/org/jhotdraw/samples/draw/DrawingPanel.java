@@ -8,24 +8,7 @@ import org.jhotdraw.app.action.edit.CutAction;
 import org.jhotdraw.app.action.edit.DuplicateAction;
 import org.jhotdraw.app.action.edit.PasteAction;
 import org.jhotdraw.app.action.edit.SelectAllAction;
-import org.jhotdraw.draw.AbstractAttributedFigure;
-import org.jhotdraw.draw.BezierFigure;
-import org.jhotdraw.draw.ConnectionFigure;
-import org.jhotdraw.draw.DefaultDrawing;
-import org.jhotdraw.draw.DefaultDrawingEditor;
-import org.jhotdraw.draw.DiamondFigure;
-import org.jhotdraw.draw.DrawLabels;
-import org.jhotdraw.draw.Drawing;
-import org.jhotdraw.draw.DrawingEditor;
-import org.jhotdraw.draw.DrawingView;
-import org.jhotdraw.draw.EllipseFigure;
-import org.jhotdraw.draw.LineConnectionFigure;
-import org.jhotdraw.draw.LineFigure;
-import org.jhotdraw.draw.RectangleFigure;
-import org.jhotdraw.draw.RoundRectangleFigure;
-import org.jhotdraw.draw.TextAreaFigure;
-import org.jhotdraw.draw.TextFigure;
-import org.jhotdraw.draw.TriangleFigure;
+import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.action.BringToFrontAction;
 import org.jhotdraw.draw.action.ButtonFactory;
 import org.jhotdraw.draw.action.GroupAction;
@@ -53,7 +36,6 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JToolBar;
 import javax.swing.UIManager;
 import java.util.Collection;
-import java.util.ResourceBundle;
 
 import static org.jhotdraw.draw.AttributeKeys.END_DECORATION;
 
@@ -170,7 +152,7 @@ public class DrawingPanel extends JPanel {
 
         toolButtonGroup = new javax.swing.ButtonGroup();
         scrollPane = new javax.swing.JScrollPane();
-        view = new org.jhotdraw.draw.DefaultDrawingView();
+        view = new DefaultDrawingView();
         jPanel1 = new javax.swing.JPanel();
         creationToolbar = new javax.swing.JToolBar();
         attributesToolbar = new javax.swing.JToolBar();
@@ -248,6 +230,6 @@ public class DrawingPanel extends JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.ButtonGroup toolButtonGroup;
-    private org.jhotdraw.draw.DefaultDrawingView view;
+    private DefaultDrawingView view;
     // End of variables declaration//GEN-END:variables
 }

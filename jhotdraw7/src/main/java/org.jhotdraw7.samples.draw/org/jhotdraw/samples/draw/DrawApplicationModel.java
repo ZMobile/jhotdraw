@@ -47,6 +47,7 @@ import java.util.List;
 
 import static org.jhotdraw.draw.AttributeKeys.END_DECORATION;
 
+
 /**
  * Provides factory methods for creating views, menu bars and toolbars.
  * <p>

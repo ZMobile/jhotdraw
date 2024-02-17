@@ -156,7 +156,7 @@ public interface ApplicationModel {
     public URIChooser createSaveChooser(Application a, @Nullable View v);
 
     /**
-     * Creates an import chooser.
+     * Creates an import org.jhotdraw.draw.Chooser.
      *
      * @param a Application.
      * @param v The view for which the chooser needs to be created, or null

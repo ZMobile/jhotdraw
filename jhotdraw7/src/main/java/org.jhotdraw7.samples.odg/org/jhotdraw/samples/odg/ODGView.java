@@ -7,10 +7,7 @@ import org.jhotdraw.app.AbstractView;
 import org.jhotdraw.app.View;
 import org.jhotdraw.app.action.edit.RedoAction;
 import org.jhotdraw.app.action.edit.UndoAction;
-import org.jhotdraw.draw.DefaultDrawingEditor;
-import org.jhotdraw.draw.Drawing;
-import org.jhotdraw.draw.DrawingEditor;
-import org.jhotdraw.draw.GridConstrainer;
+import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.action.ButtonFactory;
 import org.jhotdraw.draw.io.ImageInputFormat;
 import org.jhotdraw.draw.io.ImageOutputFormat;
@@ -48,7 +45,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.ResourceBundle;
 
 /**
  * Provides a view on a ODG drawing.
@@ -305,7 +301,7 @@ public class ODGView extends AbstractView {
     private void initComponents() {
 
         scrollPane = new javax.swing.JScrollPane();
-        view = new org.jhotdraw.draw.DefaultDrawingView();
+        view = new DefaultDrawingView();
         propertiesPanel = new org.jhotdraw.samples.odg.ODGPropertiesPanel();
 
         setLayout(new java.awt.BorderLayout());
@@ -320,6 +316,6 @@ public class ODGView extends AbstractView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jhotdraw.samples.odg.ODGPropertiesPanel propertiesPanel;
     private javax.swing.JScrollPane scrollPane;
-    private org.jhotdraw.draw.DefaultDrawingView view;
+    private DefaultDrawingView view;
     // End of variables declaration//GEN-END:variables
 }

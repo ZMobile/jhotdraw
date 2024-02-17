@@ -691,7 +691,7 @@ public abstract class AbstractApplication extends AbstractBean implements Applic
         }
     }
 
-    /** Gets an import chooser for the specified view or for the application.
+    /** Gets an import org.jhotdraw.draw.Chooser for the specified view or for the application.
      * <p>
      * If the chooser has an accessory panel, it can access the view using
      * the client property "view" on the component of the chooser. It can 
